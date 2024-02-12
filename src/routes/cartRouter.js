@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { CartManager } from "../config/CartManager.js";
+import { Router } from "express"
+import { CartManager } from "../config/CartManager.js"
 const cartManager = new CartManager('./src/data/cart.json')
 
 const cartRouter = Router()
@@ -17,6 +17,7 @@ cartRouter.post('/:pid', async (req, res) => {
     try {
         const productId = req.params.pid
         const { quantity } = req.body
+        console.log(productId)
         const mensaje = await cartManager.addProductByCart(productId, quantity)
         res.status(200).send(mensaje)
     } catch (error) {
